@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Yorum Yap</title>
+    <style>
+        form {
+            margin: auto;
+            width: 50%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/}">Home</a>
+    <a class="navbar-brand" th:href="@{/users}">Users</a>
+    <a class="navbar-brand" th:href="@{/posts}">Posts</a>
+    <a class="navbar-brand" th:href="@{/register}">Register</a>
+    <a class="navbar-brand" th:href="@{/create-post}">Create Post</a>
+</nav>
+<br><br><br>
+<form method="POST" th:object="${comment}">
+    <div class="form-group">
+        <label for="title">Name:</label>
+        <input th:field="*{name}" type="text" id="title" name="title" required/>
+    </div>
+    <div class="form-group">
+        <label for="content">Comment:</label>
+        <input th:field="*{comment}" type="text" id="content" name="content" required/>
+    </div>
+    <div class="form-group">
+        <label for="PostId">PostId:</label>
+        <input th:field="*{postId}" type="number" id="PostId" name="PostId" required/>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+
+</html>
